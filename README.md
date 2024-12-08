@@ -57,4 +57,17 @@ from customer
 group by first_name,
          last_name
 order by total_value desc;
+```
+Key Techniques:
+
+LEFT JOIN: 
+Combines data from multiple related tables to enrich customer profiles.
+Aggregations:
+COUNT(rental.rental_id): Counts the number of rentals per customer.
+SUM(payment.amount): Calculates the total payment value for each customer.
+Grouping and Ranking:
+GROUP BY groups data by customer names.
+ORDER BY total_value DESC ranks customers by their lifetime value.
+
+
 
