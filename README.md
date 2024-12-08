@@ -39,3 +39,22 @@ Advisors are tagged with their role, while investors include their associated co
 Insight: Assessed coverage of the most-awarded actors
 For actors with 3 awards, calculated the percentage represented in the inventory.
 Similar percentages for actors with 2 and 1 award. 
+
+### Sample SQL Code
+The following query demonstrates how customer data was analyzed to identify top-performing customers based on rental history and total payments:
+
+```sql
+select
+    first_name as First_Name,
+    last_name as Last_Name,
+    count(rental.rental_id) as Number_of_Rentals,
+    sum(payment.amount) as Total_Value
+from customer
+    left join rental
+        on customer.customer_id = rental.customer_id
+    left join payment
+        on rental.rental_id = payment.rental_id
+group by first_name,
+         last_name
+order by total_value desc;
+
